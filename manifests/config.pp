@@ -109,10 +109,10 @@ class kubernetes::config (
   $kubelet_extra_config_yaml = regsubst(to_yaml($kubelet_extra_config), '^---\n', '')
   $kubelet_extra_config_alpha1_yaml = regsubst(to_yaml($kubelet_extra_config_alpha1), '^---\n', '')
 
-  if $kubernetes_version =~ /1.1(0|1)/ {
-    $template = 'alpha1'
-  } else {
-    $template = 'alpha3'
+  case $kubernetes_version {
+    /1.11/: { $template = 'alpha1'}
+    /1.12/: { $template = 'alpha3'}
+    default: { $template = 'beta1'}
   }
 
   file { $config_file:
