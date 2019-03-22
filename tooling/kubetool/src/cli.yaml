@@ -1,0 +1,46 @@
+name: kubetool
+version: "0.1"
+author: Dave Try <dave.try@puppetlabs.com>
+about: Produces hiera config for the Puppetlabs Kubernetes module
+args:
+    - os:
+        short: o
+        long: os
+        help: The operating system to use
+        value_name: OS
+        required: true
+    - version:
+        short: v
+        long: version
+        help: The kubernetes version to use
+        value_name: VERSION
+        required: true
+    - container_runtime:
+        short: r
+        long: container-runtime
+        help: the container runtime to use. this can only be docker or cri_containerd
+        value_name: RUNTIME
+        required: true
+    - cni_network_provider:
+        short: c
+        long: cni-network-provider
+        help: the networking provider to use
+        value_name: CNI
+        required: true
+        long: etcd-initial-cluster
+        help: the list of servers in the etcd cluster
+        value_name: ETCD
+        required: true
+    - api_address:
+        short: t
+        long: api-address
+        help: the ip address that kube api will listen on
+        value_name: API
+        required: true
+    - install_dashboard:
+        short: d
+        long: install-dashboard
+        help: the networking provider to use
+        value_name: DASHBOARD
+
+
